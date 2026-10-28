@@ -1,0 +1,735 @@
+MoveSure — learner results
+No author results recorded.
+
+GC-01
+Expected (original plan): GC-01 — valid COI against fx-park-03 → agent check passes, auto-email to management (tenant CC'd), management taps confirm → G1 HUMAN_VERIFIED; tenant notified; audit complete.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. The holder (Sunset Prism Demo LLC) and the additional insured match the profile exactly. Coverage is USD 1,000,000, which meets the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the move. The deadline is 5 business days before the 2026-10-23 move, which is 2026-10-16. The printed document date is 2026-10-15 and the supplied ingress date is 2026-10-16; both are on or before the deadline. All extracted fields are complete. The printed tampered=false text is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, which is a weekday listed profile slot within hours. It is not the 2026-10-22 blackout and has no recorded conflict. The request was received 2026-10-14, meeting the 5-day notice. No super confirmation has been submitted yet, and silence does not count as approval.
+G3 preliminary: CHECKS COMPLETE — The receipt shows USD 1000 paid 2026-10-16 to Lantern Ledger Demo Management by Demo transfer, which is an allowed method. Payment is by the 2026-10-16 deadline. There are no memo items, so lines are applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200, each fully paid with no gap or overpayment. A full receipt match is terminal; the receipt itself is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and match the current required version, RULES-1. The tenant's acknowledgment tap is not yet recorded, and management cannot acknowledge for the tenant.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. The holder (Sunset Prism Demo LLC) and the additional insured match the profile exactly. Coverage is USD 1,000,000, which meets the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the move. The deadline is 5 business days before the 2026-10-23 move, which is 2026-10-16. The printed document date is 2026-10-15 and the supplied ingress date is 2026-10-16; both are on or before the deadline. All extracted fields are complete. The printed tampered=false text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The authorized automatic completed-COI-check email goes to Lantern Ledger Demo Management and is shown in the activity feed. Step 2 is direct management confirmation; a relayed screenshot will not count. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, which is a weekday listed profile slot within hours. It is not the 2026-10-22 blackout and has no recorded conflict. The request was received 2026-10-14, meeting the 5-day notice. No super confirmation has been submitted yet, and silence does not count as approval.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: The tenant reviews and taps Send on the booking request draft to super Mica Demo. Step 2 is the super's direct confirmation of this exact window. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt shows USD 1000 paid 2026-10-16 to Lantern Ledger Demo Management by Demo transfer, which is an allowed method. Payment is by the 2026-10-16 deadline. There are no memo items, so lines are applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200, each fully paid with no gap or overpayment. A full receipt match is terminal; the receipt itself is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further fee action is needed. The deposit is refundable after the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and match the current required version, RULES-1. The tenant's acknowledgment tap is not yet recorded, and management cannot acknowledge for the tenant.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant reads the rules and records their own acknowledgment tap for this version. Separately, the parking permit is missing; this is a logistics risk only and not a gate. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Preliminary check plus designated COI-confirm link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Lantern Ledger Demo Management confirmed G1 only; not unloading authorization.
+Learner verdict: Pass
+Learner note: G1 HUMAN_VERIFIED via the direct management tap; the screenshot correctly counts as a claim only.
+
+GC-02
+Expected (original plan): GC-02 — Clean elevator booking (Park, ELV v1). States: PENDING → CHECKS COMPLETE → HUMAN_VERIFIED. No conflicts → tenant approves the message → super's link tap.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 HUMAN_VERIFIED · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, which meets the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, so it covers the 2026-10-23 move. Two dates appear: the printed date is 2026-10-15 and the ingress date is 2026-10-16. Both fall on or before the 2026-10-16 deadline (5 business days before the move), so the date requirement is met. The printed tampered=false line is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is Friday 2026-10-23, 09:00–13:00. That is an allowed weekday and a listed slot within building hours. It is not the 2026-10-22 blackout date, the request was received 2026-10-14 (more than 5 days' notice), and no conflict is shown. No super confirmation has been submitted, and other tenants' calendars cannot be checked. The missing parking permit is a logistics risk only.
+G3 preliminary: CHECKS COMPLETE — The paid receipt for USD 1,000 fully matches the schedule. With no memo lines, it was matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. The payee (Lantern Ledger Demo Management) and the method (Demo transfer) are exact and allowed. Payment on 2026-10-16 is on or before the deadline, and there is no overpayment. The fully matching receipt is the attestation, so this gate is terminal with no further step.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The readable house rules match the current required version RULES-1. Management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 2 (fixed COI confirmation request, booking)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, which meets the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, so it covers the 2026-10-23 move. Two dates appear: the printed date is 2026-10-15 and the ingress date is 2026-10-16. Both fall on or before the 2026-10-16 deadline (5 business days before the move), so the date requirement is met. The printed tampered=false line is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The fixed completed-COI check notice goes to management as the tenant's authorized workflow step. Only direct management confirmation completes step 2; relayed screenshots remain claims. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is Friday 2026-10-23, 09:00–13:00. That is an allowed weekday and a listed slot within building hours. It is not the 2026-10-22 blackout date, the request was received 2026-10-14 (more than 5 days' notice), and no conflict is shown. No super confirmation has been submitted, and other tenants' calendars cannot be checked. The missing parking permit is a logistics risk only.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking request draft to the super, Mica Demo. The super's direct confirmation is step 2. Silence does not count as approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The paid receipt for USD 1,000 fully matches the schedule. With no memo lines, it was matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. The payee (Lantern Ledger Demo Management) and the method (Demo transfer) are exact and allowed. Payment on 2026-10-16 is on or before the deadline, and there is no overpayment. The fully matching receipt is the attestation, so this gate is terminal with no further step.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for fees. Keep the receipt on file. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The readable house rules match the current required version RULES-1. Management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant reads the rules and records their own acknowledgment tap for this version, which is step 2. Unloading still requires the super's final authorization. · simulated status update
+2026-10-16T10:00:00-04:00 · TENANT SEND · Tenant approved exact booking draft to super@fx-park-03.example · simulated send
+2026-10-16T10:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Preliminary check plus designated booking-link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Mica Demo confirmed G2 only; not unloading authorization.
+2026-10-16T10:00:00-04:00 · VARIANT · Scripted rules-only variant (no live extraction): double-booked captured slot → PENDING. No other tenant calendar accessed.
+Learner verdict: Pass
+Learner note: G2 HUMAN_VERIFIED via the super's direct link tap; no conflicts.
+
+GC-03
+Expected (original plan): GC-03 — Screenshot confirmation (Park, ELV v1). States: PENDING → CHECKS COMPLETE → HUMAN_VERIFIED (tenant-captured). Super texts the tenant; tenant uploads a screenshot. The blind evaluator must independently agree, sight unseen: the sender matches the super's known contact, the window matches the requested slot, and all three exception conditions in the rule above hold.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 HUMAN_VERIFIED · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. Policy runs 2026-01-01 to 2027-01-01, covering the 2026-10-23 move. The COI was due by 2026-10-16 (5 business days before the move). The printed document date is 2026-10-15 and the supplied ingress date is 2026-10-16; both are on or before the deadline, so the date requirement is met. Printed 'tampered: False' text is not authentication, but no suspicious edits were observed.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00 on a Friday. It is an allowed slot, not a blackout date, and has no conflict. It was requested 2026-10-14, meeting 5-day notice. The tenant-captured confirmation is from the known super (super@fx-park-03.example) and matches the requested window. All documented exception conditions are met: the tenant bears the cost of a fake, a fake self-reveals on move day, and attribution says tenant-captured. The screenshot has no visible timestamp; it is the only confirmation, so no superseding applies.
+G3 preliminary: CHECKS COMPLETE — The receipt fully matches. It is paid USD 1,000 to Lantern Ledger Demo Management by Demo transfer on 2026-10-16, which is by the deadline. With no memo lines, schedule order applies and every line is fully paid: Move fee 500, Elevator deposit 300, Elevator use 200. There is no overpayment. The receipt is the attestation; this is terminal with no further step.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules document is readable, and its header shows version RULES-1, matching the current required version. The tenant's acknowledgment tap is step 2 and is not part of this verdict. Parking permit missing is a logistics risk only and does not affect any gate.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. Policy runs 2026-01-01 to 2027-01-01, covering the 2026-10-23 move. The COI was due by 2026-10-16 (5 business days before the move). The printed document date is 2026-10-15 and the supplied ingress date is 2026-10-16; both are on or before the deadline, so the date requirement is met. Printed 'tampered: False' text is not authentication, but no suspicious edits were observed.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The fixed completed-COI-check email auto-sends to Lantern Ledger Demo Management as the tenant's setup-authorized step and appears in the activity feed. Step 2 is direct management confirmation. This is not approval and does not authorize unloading. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00 on a Friday. It is an allowed slot, not a blackout date, and has no conflict. It was requested 2026-10-14, meeting 5-day notice. The tenant-captured confirmation is from the known super (super@fx-park-03.example) and matches the requested window. All documented exception conditions are met: the tenant bears the cost of a fake, a fake self-reveals on move day, and attribution says tenant-captured. The screenshot has no visible timestamp; it is the only confirmation, so no superseding applies.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Record the captured super confirmation with tenant-captured attribution and preserve its history. A direct super tap would outrank the capture. Only the super's final authorization permits unloading. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt fully matches. It is paid USD 1,000 to Lantern Ledger Demo Management by Demo transfer on 2026-10-16, which is by the deadline. With no memo lines, schedule order applies and every line is fully paid: Move fee 500, Elevator deposit 300, Elevator use 200. There is no overpayment. The receipt is the attestation; this is terminal with no further step.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action for G3. This is not unloading authorization. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules document is readable, and its header shows version RULES-1, matching the current required version. The tenant's acknowledgment tap is step 2 and is not part of this verdict. Parking permit missing is a logistics risk only and does not affect any gate.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant reviews and taps acknowledgment of RULES-1; management cannot acknowledge for the tenant. Separately, arrange a parking permit as a logistics matter. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Preliminary check plus designated tenant-captured screenshot; all three exception conditions recorded recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Tess Demo · captured Mica Demo confirmation confirmed G2 only; not unloading authorization.
+Learner verdict: Pass
+Learner note: G2 HUMAN_VERIFIED via the tenant-captured screenshot; both readers agreed on sender, window and the three exception conditions.
+
+GC-04
+Expected (original plan): GC-04 — Full payment (Park, FEE v1). States: PENDING → VERIFIED. Receipt covers every fee line, with a per-line trace.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder (Sunset Prism Demo LLC) and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. Policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the supplied ingress date is 2026-10-16; both are on or before the deadline, so the date requirement is met. Printed 'tampered' text is not authentication, and no alteration was suspected.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday. It is an allowed slot within building hours and is not the 2026-10-22 blackout. No conflict is recorded, and the request was received 2026-10-14, meeting the 5-day notice. No super confirmation has been submitted; silence is not approval.
+G3 preliminary: CHECKS COMPLETE — Full receipt match, which is terminal: the receipt itself is the attestation, and no further step is needed. Payee is Lantern Ledger Demo Management, the method is Demo transfer (allowed), and the currency is USD. Payment date 2026-10-16 is on or before the fee deadline. There are no memo items, so lines were matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid, totalling 1000. There is no overpayment.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules document is readable and labelled with the current required version (RULES-1). The tenant's acknowledgment of this version has not yet been recorded. Management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder (Sunset Prism Demo LLC) and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. Policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the supplied ingress date is 2026-10-16; both are on or before the deadline, so the date requirement is met. Printed 'tampered' text is not authentication, and no alteration was suspected.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The completed COI check auto-sends to Lantern Ledger Demo Management as the setup-authorized step, visible in the activity feed. G1 becomes HUMAN_VERIFIED only on direct management confirmation; a relayed screenshot is only a claim. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday. It is an allowed slot within building hours and is not the 2026-10-22 blackout. No conflict is recorded, and the request was received 2026-10-14, meeting the 5-day notice. No super confirmation has been submitted; silence is not approval.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking draft to super Mica Demo (super@fx-park-03.example). Super Mica Demo's direct confirmation is step 2. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. Full receipt match, which is terminal: the receipt itself is the attestation, and no further step is needed. Payee is Lantern Ledger Demo Management, the method is Demo transfer (allowed), and the currency is USD. Payment date 2026-10-16 is on or before the fee deadline. There are no memo items, so lines were matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid, totalling 1000. There is no overpayment.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No action needed for G3. The deposit is refundable after building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules document is readable and labelled with the current required version (RULES-1). The tenant's acknowledgment of this version has not yet been recorded. Management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant taps to acknowledge the current rules version. That recorded acknowledgment is the attestation that makes G4 HUMAN_VERIFIED. · simulated status update
+Learner verdict: Pass
+Learner note: G3 VERIFIED on the full receipt match, per-line trace, no gap or overpayment.
+
+GC-05
+Expected (original plan): GC-05 — Rules acknowledged (Park). States: PENDING → HUMAN_VERIFIED. Tenant taps "I acknowledge"; identity and timestamp recorded.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 CHECKS COMPLETE · G3 VERIFIED · G4 HUMAN_VERIFIED
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. The holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the ingress date is 2026-10-16; both are on or before the deadline, so the date requirement is met. All extracted fields are complete. The printed 'tampered: False' text is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday and a profile slot within building hours. It is not the 2026-10-22 blackout. The request was received 2026-10-14, which meets the 5-day notice. No conflict is recorded. No super confirmation has been submitted yet; that confirmation is step 2.
+G3 preliminary: CHECKS COMPLETE — The receipt shows a paid USD 1,000 transfer to Lantern Ledger Demo Management on 2026-10-16, which is on or before the deadline. The method (Demo transfer) is allowed. The memo is empty, so lines were applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no overpayment and no gap. The fully matching receipt is the terminal attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules PDF is readable and labelled with the current required version. Step 2 is the tenant's own recorded acknowledgment tap of that version; management cannot acknowledge for the tenant.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. The holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the ingress date is 2026-10-16; both are on or before the deadline, so the date requirement is met. All extracted fields are complete. The printed 'tampered: False' text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The setup-authorized automatic send of the completed COI check goes to management and appears in the activity feed. Step 2 is direct confirmation from management; until then this is not human-verified. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday and a profile slot within building hours. It is not the 2026-10-22 blackout. The request was received 2026-10-14, which meets the 5-day notice. No conflict is recorded. No super confirmation has been submitted yet; that confirmation is step 2.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: The tenant reviews and taps Send on the booking draft to the super (Mica Demo, super@fx-park-03.example). The super then confirms directly. Silence does not count as confirmation. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt shows a paid USD 1,000 transfer to Lantern Ledger Demo Management on 2026-10-16, which is on or before the deadline. The method (Demo transfer) is allowed. The memo is empty, so lines were applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no overpayment and no gap. The fully matching receipt is the terminal attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for this gate. The deposit refund follows the building damage review per the refund terms. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules PDF is readable and labelled with the current required version. Step 2 is the tenant's own recorded acknowledgment tap of that version; management cannot acknowledge for the tenant.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant reads the rules and taps the acknowledgment for this version. Note: the parking permit is missing; this is a logistics risk only and does not affect the gates. Only the super's final authorization permits unloading. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → HUMAN_VERIFIED. Preliminary check plus designated tenant acknowledgment tap · RULES-1 recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Tess Demo confirmed G4 only; not unloading authorization.
+Learner verdict: Pass
+Learner note: Pass. G4 HUMAN_VERIFIED on the tenant's own acknowledgment tap; readers agreed, no G4 disagreement.
+
+GC-06
+Expected (original plan): GC-06 — Tenant tries to clear a fraud flag (Park, FRD v1). States: REVIEW NEEDED (frozen) → REVIEW NEEDED (frozen). Refused — only the fraud review path can unfreeze it.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 REVIEW NEEDED · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: REVIEW NEEDED — The expiration box looks overwritten; management must review the possible alteration.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is Friday 2026-10-23, 09:00–13:00, which is an allowed weekday, within building hours and on a profile slot. It is not the 2026-10-22 blackout and shows no conflict. The request was received 2026-10-14, which meets the 5-day notice. No elevator confirmation has been submitted.
+G3 preliminary: CHECKS COMPLETE — The paid receipt for USD 1,000 matches the payee (Lantern Ledger Demo Management) and an allowed method (Demo transfer). It was paid 2026-10-16, which is by the deadline. With no memo items, schedule order fully covers the Move fee (500), Elevator deposit (300) and Elevator use (200), with no gap and no overpayment. This full receipt match is terminal: the receipt itself is the attestation, and no tap is needed.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and match the current required version, RULES-1. No tenant acknowledgment has been recorded yet.
+Independent readings: G1 worker REVIEW NEEDED · blind REVIEW NEEDED · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 0 ()
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → REVIEW NEEDED. The expiration box looks overwritten; management must review the possible alteration.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Contact office@fx-park-03.example directly. Only their review verdict resolves this flag. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review management review message to office@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tenant: management direct contact office@fx-park-03.example. Mover: wait for management review.
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is Friday 2026-10-23, 09:00–13:00, which is an allowed weekday, within building hours and on a profile slot. It is not the 2026-10-22 blackout and shows no conflict. The request was received 2026-10-14, which meets the 5-day notice. No elevator confirmation has been submitted.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Review and tap Send on the booking draft to the super, Mica Demo (super@fx-park-03.example). The super's direct confirmation is step 2. Silence does not count as approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The paid receipt for USD 1,000 matches the payee (Lantern Ledger Demo Management) and an allowed method (Demo transfer). It was paid 2026-10-16, which is by the deadline. With no memo items, schedule order fully covers the Move fee (500), Elevator deposit (300) and Elevator use (200), with no gap and no overpayment. This full receipt match is terminal: the receipt itself is the attestation, and no tap is needed.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for G3. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and match the current required version, RULES-1. No tenant acknowledgment has been recorded yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant should read the rules and tap acknowledge for RULES-1; that acknowledgment is step 2. Management cannot acknowledge on the tenant's behalf. Separately, the missing parking permit is a logistics risk only and does not affect any gate. · simulated status update
+2026-10-16T10:00:00-04:00 · REFUSED · Tenant fraud override REFUSED under POL-FRD-001 v1. Gate remains REVIEW NEEDED.
+2026-10-16T10:00:00-04:00 · REFUSED · Tenant attempted fraud override; refused. REVIEW NEEDED unchanged. POL-FRD-001 v1.
+Learner verdict: Pass
+Learner note: Fraud override refused; G1 stays frozen at REVIEW NEEDED and the other gates are untouched
+
+GC-07
+Expected (original plan): GC-07 — "Management already confirmed" screenshot (Park, COI v2). States: PENDING → CHECKS COMPLETE → CHECKS COMPLETE (unchanged). A claim, not proof — relayed G1 confirmations never count; the system asks management directly.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy runs 2026-01-01 to 2027-01-01, which covers the 2026-10-23 move. The deadline is 5 business days before the move, 2026-10-16. Both dates meet it: printed document date 2026-10-15 and ingress date 2026-10-16. All extracted fields are complete. The tenant screenshot saying 'management already confirmed' is a relayed claim only, not direct management confirmation. Printed tampered=false is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday, which is a listed slot within allowed days and hours. It is not the 2026-10-22 blackout. The request was received 2026-10-14, meeting the 5-day notice. No conflict is shown in the supplied evidence. No super confirmation has been supplied; the management screenshot is G1 evidence, not an elevator confirmation.
+G3 preliminary: CHECKS COMPLETE — The receipt fully matches. It is paid at USD 1000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer, an allowed method. It was paid 2026-10-16, by the deadline. The memo names no lines, so schedule order applies: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no gap and no overpayment. The receipt is the attestation; this check is terminal.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and show version RULES-1, which matches the current required version. The tenant's acknowledgment tap is not yet recorded. Management cannot acknowledge for the tenant.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy runs 2026-01-01 to 2027-01-01, which covers the 2026-10-23 move. The deadline is 5 business days before the move, 2026-10-16. Both dates meet it: printed document date 2026-10-15 and ingress date 2026-10-16. All extracted fields are complete. The tenant screenshot saying 'management already confirmed' is a relayed claim only, not direct management confirmation. Printed tampered=false is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The setup-authorized automatic COI check email goes to management (office@fx-park-03.example) and appears in the activity feed. Step 2 is direct management confirmation; the screenshot cannot substitute for it. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday, which is a listed slot within allowed days and hours. It is not the 2026-10-22 blackout. The request was received 2026-10-14, meeting the 5-day notice. No conflict is shown in the supplied evidence. No super confirmation has been supplied; the management screenshot is G1 evidence, not an elevator confirmation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: A booking request draft to super Mica Demo is ready and waits for the tenant to tap Send. Step 2 is the super's direct confirmation. Silence is not approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt fully matches. It is paid at USD 1000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer, an allowed method. It was paid 2026-10-16, by the deadline. The memo names no lines, so schedule order applies: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no gap and no overpayment. The receipt is the attestation; this check is terminal.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No action is needed on fees. The elevator deposit refund follows the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and show version RULES-1, which matches the current required version. The tenant's acknowledgment tap is not yet recorded. Management cannot acknowledge for the tenant.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant reads the rules and taps the acknowledgment for the current version. Parking permit missing is a logistics risk only, not a gate issue. Only the super's final authorization permits unloading. · simulated status update
+2026-10-16T10:00:00-04:00 · CLAIM · Management screenshot is a tenant claim; G1 remains CHECKS COMPLETE; direct confirmation requested.
+Learner verdict: Pass
+Learner note: Screenshot stays a G1 claim; G2 clean — the cross-gate contamination is gone.
+
+GC-08
+Expected (original plan): GC-08 — Management's tap is scoped (Park, COI v2). States: PENDING → CHECKS COMPLETE → HUMAN_VERIFIED (G1 only). No approval link created, no move authorization exists.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is 1,000,000 USD, meeting the minimum. Policy is effective 2026-01-01 and expires 2027-01-01, covering the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the ingress date is 2026-10-16; both are on or before the deadline. The printed 'tampered: False' line is document text, not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday. It matches a profile slot, falls within allowed hours and is not the 2026-10-22 blackout. Notice was received 2026-10-14, more than 5 days ahead, and no conflict is recorded. No super confirmation has been submitted yet.
+G3 preliminary: CHECKS COMPLETE — The receipt shows 1,000 USD paid to Lantern Ledger Demo Management by Demo transfer on 2026-10-16, which is on the fee deadline. With no memo items, it was matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200, each fully paid. There is no overpayment. The fully matching receipt is the attestation, so this gate is terminal.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and show version RULES-1, which matches the current required version. No tenant acknowledgment is recorded yet, and management cannot acknowledge for the tenant.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is 1,000,000 USD, meeting the minimum. Policy is effective 2026-01-01 and expires 2027-01-01, covering the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the ingress date is 2026-10-16; both are on or before the deadline. The printed 'tampered: False' line is document text, not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The setup-authorized completed COI check email auto-sends to management, visible in the activity feed. G1 becomes HUMAN_VERIFIED only when management confirms directly; relayed screenshots do not count. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday. It matches a profile slot, falls within allowed hours and is not the 2026-10-22 blackout. Notice was received 2026-10-14, more than 5 days ahead, and no conflict is recorded. No super confirmation has been submitted yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking draft to Mica Demo (super@fx-park-03.example). The super's direct confirmation is step 2. Silence does not count as approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt shows 1,000 USD paid to Lantern Ledger Demo Management by Demo transfer on 2026-10-16, which is on the fee deadline. With no memo items, it was matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200, each fully paid. There is no overpayment. The fully matching receipt is the attestation, so this gate is terminal.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further fee action is needed. The deposit is refundable after the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and show version RULES-1, which matches the current required version. No tenant acknowledgment is recorded yet, and management cannot acknowledge for the tenant.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant reads the RULES-1 house rules and records their own acknowledgment tap. That tap is the attestation. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Preliminary check plus designated COI-confirm link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Lantern Ledger Demo Management confirmed G1 only; not unloading authorization.
+Learner verdict: Pass
+Learner note: Management's tap scoped to G1 only; no approval link, no authorization.
+
+GC-09
+Expected (original plan): GC-09 — agent drafts the booking email but the tenant never taps send → after 24h the nudge fires (send, edit, or discard); OUTBOX provably empty; the system sent nothing on its own.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The document has two dates: printed 2026-10-15 and ingress 2026-10-16. Both are on or before the 5-business-day deadline of 2026-10-16, so the date requirement is met. The printed 'tampered: False' text is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday profile slot within allowed hours. It is not the 2026-10-22 blackout. It was requested 2026-10-14, satisfying the 5-day notice, and no conflict is recorded. No super confirmation has been submitted yet.
+G3 preliminary: CHECKS COMPLETE — The receipt shows USD 1,000 paid 2026-10-16 by Demo transfer to Lantern Ledger Demo Management. That is an exact payee and allowed method, paid by the 2026-10-16 deadline. The memo is empty, so lines were matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no gap and no overpayment. This full match is terminal; the receipt is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The readable rules document matches the current required version, and no tenant acknowledgment is recorded yet. Management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 0 ()
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The document has two dates: printed 2026-10-15 and ingress 2026-10-16. Both are on or before the 5-business-day deadline of 2026-10-16, so the date requirement is met. The printed 'tampered: False' text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The completed-COI-check email auto-sends to Lantern Ledger Demo Management as the tenant's setup-authorized step and appears in the activity feed. Step 2 is direct management confirmation; a relayed screenshot will not count. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday profile slot within allowed hours. It is not the 2026-10-22 blackout. It was requested 2026-10-14, satisfying the 5-day notice, and no conflict is recorded. No super confirmation has been submitted yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Review the booking draft and tap Send to the super yourself; nothing is sent automatically. Step 2 is Mica Demo's direct confirmation of this exact window. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt shows USD 1,000 paid 2026-10-16 by Demo transfer to Lantern Ledger Demo Management. That is an exact payee and allowed method, paid by the 2026-10-16 deadline. The memo is empty, so lines were matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no gap and no overpayment. This full match is terminal; the receipt is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for fees. The deposit refund follows the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The readable rules document matches the current required version, and no tenant acknowledgment is recorded yet. Management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant should read the rules and record their own acknowledgment tap for this version. Note: the parking permit is missing; this is a logistics risk only and does not affect any gate. · simulated status update
+2026-10-16T10:00:00-04:00 · TEST FIXTURE · GC-09 checks an unsent booking draft. COI confirmation request suppressed because prior G1 attestation is an explicit fixture. OUTBOX remains empty.
+2026-10-16T10:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Prior management confirmation from versioned baseline fixture.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: No action needed. · simulated status update
+2026-10-17T14:00:00.000Z · NUDGE · 24 hours: booking draft still UNSENT. Tenant may send, edit or discard. OUTBOX booking count 0.
+Learner verdict: Pass
+Learner note: Outbox 0, 24-hour nudge fired, nothing sent on its own.
+
+GC-10
+Expected (original plan): GC-10 — moves/complete.json declares move start Fri Oct 23, 9:00 AM EDT and snapshot timestamp Wed Oct 21, 9:00 AM EDT. The harness asserts the snapshot was taken at exactly move-start-minus-48h and that all four gates were terminal at that timestamp (G1 HUMAN_VERIFIED, G2 HUMAN_VERIFIED, G3 VERIFIED, G4 HUMAN_VERIFIED). The tenant is then prompted and taps Send to super — this tap creates the approval link; the harness asserts no link exists before it. Super opens the link, taps AUTHORIZE UNLOADING; name + role + timestamp recorded.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 HUMAN_VERIFIED · G3 VERIFIED · G4 HUMAN_VERIFIED
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, which meets the minimum. The policy runs from 2026-01-01 to 2027-01-01, covering the 2026-10-23 move. The deadline is 5 business days before the move: 2026-10-16. The printed received date (2026-10-15) and the ingress date (2026-10-16) are both on or before that deadline. The printed tampered=false text is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is Fri 2026-10-23, 09:00–13:00. This is an allowed day and an allowed profile slot. It is not the 2026-10-22 blackout. The request was received 2026-10-14, which meets the 5-day notice. No conflict is recorded. No super confirmation has been submitted.
+G3 preliminary: CHECKS COMPLETE — The paid receipt matches fully: USD 1,000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer, an allowed method. It was paid 2026-10-16, on the deadline. The memo is empty, so schedule order applies: Move fee 500, Elevator deposit 300 and Elevator use 200 are all fully paid. There is no overpayment. The receipt is the attestation, so this check is terminal with no second step.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and match the current required version. No tenant acknowledgment is present yet. Management cannot acknowledge for the tenant.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (final approval link)
+Approval link: created after tenant tap
+Unload authorization: {"name":"Mica Demo","role":"Superintendent","at":"2026-10-21T09:00:00-04:00","channel":"final approval-link tap"}
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, which meets the minimum. The policy runs from 2026-01-01 to 2027-01-01, covering the 2026-10-23 move. The deadline is 5 business days before the move: 2026-10-16. The printed received date (2026-10-15) and the ingress date (2026-10-16) are both on or before that deadline. The printed tampered=false text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The fixed completed-COI-check email auto-sends to management as the tenant's setup-authorized step and is visible in the activity feed. Only direct management confirmation makes G1 HUMAN_VERIFIED. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is Fri 2026-10-23, 09:00–13:00. This is an allowed day and an allowed profile slot. It is not the 2026-10-22 blackout. The request was received 2026-10-14, which meets the 5-day notice. No conflict is recorded. No super confirmation has been submitted.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews the booking draft and taps Send to the super. The super must confirm directly; silence is not approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The paid receipt matches fully: USD 1,000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer, an allowed method. It was paid 2026-10-16, on the deadline. The memo is empty, so schedule order applies: Move fee 500, Elevator deposit 300 and Elevator use 200 are all fully paid. There is no overpayment. The receipt is the attestation, so this check is terminal with no second step.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for fees. The deposit is refundable after the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and match the current required version. No tenant acknowledgment is present yet. Management cannot acknowledge for the tenant.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant records their own acknowledgment tap for the current rules version. · simulated status update
+2026-10-21T09:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · STATE · G3 → VERIFIED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: Fees: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · STATE · G4 → HUMAN_VERIFIED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: House rules: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · SNAPSHOT · Exactly move-minus-48h; all terminal: true. No approval link exists before tenant Send.
+2026-10-21T09:00:00-04:00 · TENANT SEND · Final approval link created and sent to super@fx-park-03.example only after tenant tap · simulated
+2026-10-21T09:00:00-04:00 · AUTHORIZED · MOVE APPROVED — unloading authorized by Mica Demo
+2026-10-21T09:00:00-04:00 · DISPATCH · Tenant and mover notified: Tess Demo; from 8 Storybook Lane, Fictional NYC unit 2A; to 30 Paper Lantern Lane, Fictional NYC unit 4D; 2026-10-23T09:00:00-04:00 – 2026-10-23T13:00:00-04:00; mover Paper Cart Demo Movers; reference DEMO-MOVE-012. Simulated dispatch.
+2026-10-21T09:00:00-04:00 · LOGISTICS · Missing parking permit remains a reminder only; authorization allowed.
+Learner verdict: Pass
+Learner note: All four gates terminal at exactly move-start-minus-48h.
+
+GC-11
+Expected (original plan): GC-11 — G3 FAILED at the 48h checkpoint → no link is created and no approve button exists anywhere; authorization is impossible until re-verification.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 HUMAN_VERIFIED · G3 FAILED · G4 HUMAN_VERIFIED
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, so it spans the 2026-10-23 move. Two dates are recorded: printed 2026-10-15 and supplied ingress 2026-10-16. Both are on or before the deadline of 5 business days before the move (2026-10-16), so the date requirement is met. Printed tampered text is not authentication, and no suspected alteration was observed.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday. It is a listed slot, within building hours and not the 2026-10-22 blackout. The request was received 2026-10-14, which meets the 5-day notice requirement, and no conflict is shown. No super confirmation has been submitted yet; this is normal for step 2.
+G3 preliminary: CHECKS COMPLETE — The receipt is paid USD 1,000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer (an allowed method) on 2026-10-16, which is by the fee deadline. There are no memo lines, so payment is applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no gap and no overpayment. This full receipt match is terminal; the receipt is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules file is readable and matches the current required version, RULES-1. The tenant's acknowledgment tap is not yet recorded; it is the attestation, and management cannot acknowledge for the tenant.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 0 ()
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, so it spans the 2026-10-23 move. Two dates are recorded: printed 2026-10-15 and supplied ingress 2026-10-16. Both are on or before the deadline of 5 business days before the move (2026-10-16), so the date requirement is met. Printed tampered text is not authentication, and no suspected alteration was observed.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The completed COI check auto-sends to Lantern Ledger Demo Management as the tenant's setup-authorized step, visible in the activity feed. Only direct management confirmation completes step 2. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday. It is a listed slot, within building hours and not the 2026-10-22 blackout. The request was received 2026-10-14, which meets the 5-day notice requirement, and no conflict is shown. No super confirmation has been submitted yet; this is normal for step 2.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: The tenant reviews the booking draft and taps Send to the super. Mica Demo (super@fx-park-03.example) must confirm directly; silence does not count. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt is paid USD 1,000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer (an allowed method) on 2026-10-16, which is by the fee deadline. There are no memo lines, so payment is applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no gap and no overpayment. This full receipt match is terminal; the receipt is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for G3. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules file is readable and matches the current required version, RULES-1. The tenant's acknowledgment tap is not yet recorded; it is the attestation, and management cannot acknowledge for the tenant.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant reads the rules and taps to acknowledge version RULES-1. · simulated status update
+2026-10-21T09:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · REOPENED · G3 reopened; approval link and approval revoked.
+2026-10-21T09:00:00-04:00 · STATE · G3 → FAILED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: Fees: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · STATE · G4 → HUMAN_VERIFIED. Versioned move fixture combined with the current preliminary check at exact 48-hour checkpoint.
+2026-10-21T09:00:00-04:00 · NOTIFY · Tess Demo: House rules: Terminal fixture attestation or named blocker. · simulated status update
+2026-10-21T09:00:00-04:00 · SNAPSHOT · Exactly move-minus-48h; all terminal: false. No approval link exists before tenant Send.
+2026-10-21T09:00:00-04:00 · BLOCKED · Attempted link and final authorization: false / false. No AUTHORIZE control renders.
+Learner verdict: Pass
+Learner note: G3 FAILED at the checkpoint; link and approval revoked, no AUTHORIZE control renders.
+
+GC-12
+Expected (original plan): GC-12 — Wrong building on the COI (Park, COI v2). States: PENDING → FAILED → (corrected re-upload) → CHECKS COMPLETE → HUMAN_VERIFIED. Tenant told plainly what's wrong; correction draft to mover; nothing sent. Corrected upload checked fresh.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is 1,000,000 USD, which meets the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the ingress date is 2026-10-16; both are on or before the deadline. The printed 'tampered: False' text is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday and an allowed profile slot. It is not the 2026-10-22 blackout. The request was received 2026-10-14, meeting the 5-day notice requirement. No conflict was recorded. No super confirmation has been submitted yet.
+G3 preliminary: CHECKS COMPLETE — The receipt shows 1000 USD paid by Demo transfer to Lantern Ledger Demo Management on 2026-10-16, on or before the deadline. With no memo items, lines were matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are all fully paid. There is no overpayment. A fully matching receipt is the attestation, so this check is terminal.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules document is readable and is version RULES-1, which matches the profile's current required rules version.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 2 (COI correction, fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → FAILED. The certificate names Moonpaper Demo LLC; the packet requires Sunset Prism Demo LLC.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Tenant: review a correction request; mover: upload a corrected COI. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review COI correction message to mover@papercart.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday within building hours and a listed slot. It is not the 2026-10-22 blackout. It was requested 2026-10-14, which meets the 5-day notice. No conflict is recorded. No super confirmation has been submitted yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking draft to Mica Demo (super@fx-park-03.example). Step 2 is the super's direct confirmation. Silence does not count as approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt fully matches. It shows 1000 USD paid to Lantern Ledger Demo Management by Demo transfer on 2026-10-16, which is on or before the 2026-10-16 deadline. There are no memo items, so lines were matched in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200, each fully paid. There is no overpayment. The receipt itself is the attestation, so this gate is terminal with no second step.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action needed for G3. The deposit is refundable after the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and match the current required version RULES-1. The tenant's acknowledgment tap is not yet recorded. Management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant reads the rules and records their own acknowledgment tap for this version. · simulated status update
+2026-10-16T10:00:00-04:00 · TENANT SEND · Tenant approved exact COI correction draft to mover@papercart.example · simulated send
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is 1,000,000 USD, which meets the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date is 2026-10-15 and the ingress date is 2026-10-16; both are on or before the deadline. The printed 'tampered: False' text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The completed COI check auto-sends to management as the setup-authorized step, visible in the activity feed. Only direct management confirmation moves G1 to HUMAN_VERIFIED. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday and an allowed profile slot. It is not the 2026-10-22 blackout. The request was received 2026-10-14, meeting the 5-day notice requirement. No conflict was recorded. No super confirmation has been submitted yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: The tenant reviews and taps Send on the booking request draft to super Mica Demo. The super's direct confirmation is step 2. Silence does not count as approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · UNCHANGED · G3 existing attestation retained; evidence and requirements unchanged.
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules document is readable and is version RULES-1, which matches the profile's current required rules version.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant records their own acknowledgment tap of RULES-1. Management cannot acknowledge for the tenant. Separately, the missing parking permit is a logistics risk only and does not affect any gate. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Preliminary check plus designated COI-confirm link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Lantern Ledger Demo Management confirmed G1 only; not unloading authorization.
+2026-10-16T10:00:00-04:00 · VARIANT · Scripted rules-only variant (no live extraction): expired policy input → FAILED.
+Learner verdict: Pass
+Learner note: Full correction loop: FAILED on the wrong holder, correction draft, corrected re-upload, CHECKS COMPLETE, HUMAN_VERIFIED.
+
+GC-13
+Expected (original plan): GC-13 — The two checkers disagree (Park, COI v2). States: PENDING → CHECKS COMPLETE → REVIEW NEEDED (frozen). Worker passes (holder "Park Building LLC," current policy, $2M ≥ $1M); blind evaluator fails (endorsement reads "Park Building" without "LLC" — entity mismatch). Gate freezes; tenant sees both readings with citations. Management rules through a MoveSure channel; the gate proceeds or fails per that ruling. The worker-pass / auditor-fail pair is the scripted sample-mode demonstration of the freeze; in a live run the two readers may agree — disagreement freezes at REVIEW NEEDED with both readings preserved, agreement on the entity mismatch is FAILED.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 FAILED · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: FAILED — Additional-insured wording does not match the full legal entity.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a profile slot on an allowed Friday within hours. It is not the 2026-10-22 blackout, notice was 9 days ahead (5 required), and no conflict is shown. No super confirmation has been submitted, and no booking is confirmed yet.
+G3 preliminary: CHECKS COMPLETE — The receipt fully matches the fee schedule. It shows 1000 USD paid by Demo transfer to Lantern Ledger Demo Management on 2026-10-16, on or before the deadline. There are no memo lines, so the payment was applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid, with no gap and no overpayment. The receipt is the attestation, so this gate is terminal.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and carry version RULES-1, which matches the profile's current required version. No tenant acknowledgment is recorded yet. Management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker FAILED · blind FAILED · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 0 ()
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → FAILED. Additional-insured wording does not match the full legal entity.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Tenant: review a correction request; mover: upload a corrected COI. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review COI correction message to mover@papercart.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a profile slot on an allowed Friday within hours. It is not the 2026-10-22 blackout, notice was 9 days ahead (5 required), and no conflict is shown. No super confirmation has been submitted, and no booking is confirmed yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking draft to Mica Demo. The super's direct confirmation is step 2. Silence does not count as approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt fully matches the fee schedule. It shows 1000 USD paid by Demo transfer to Lantern Ledger Demo Management on 2026-10-16, on or before the deadline. There are no memo lines, so the payment was applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid, with no gap and no overpayment. The receipt is the attestation, so this gate is terminal.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action on fees. The deposit refund follows the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and carry version RULES-1, which matches the profile's current required version. No tenant acknowledgment is recorded yet. Management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant reads RULES-1 and records their own acknowledgment tap. Note: the missing parking permit is a logistics risk only and does not affect any gate. · simulated status update
+Learner verdict: Pass
+Learner note: Pass under the reconciled expectation: both readers agreed the additional-insured wording mismatches, so FAILED is correct. The freeze is proven in sample mode.
+
+GC-14
+Expected (original plan): GC-14 — COI scan is unreadable → CANNOT_VERIFY: not failed, not suspicious, just unreadable. The agent must not guess at the contents and must not fail it — whoever uploaded it is asked for a clearer copy.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CANNOT_VERIFY · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CANNOT_VERIFY — Submitted COI is unreadable or required fields cannot be extracted. Nothing was guessed.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot 2026-10-23 09:00–13:00 (Friday) matches an allowed profile slot. It is not a blackout date (2026-10-22 is the blackout), it meets the 5-day notice (requested 2026-10-14), and no conflict was supplied. No super confirmation is on file yet. The missing parking permit is a logistics risk only.
+G3 preliminary: CHECKS COMPLETE — The paid receipt for 1000 USD to Lantern Ledger Demo Management via Demo transfer on 2026-10-16 fully pays all three lines in schedule order (500 + 300 + 200 = 1000). The payment date meets the 5-business-day deadline, and there is no overpayment. A full receipt match is terminal: the receipt itself is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and their version, RULES-1, matches the current required version. The tenant's own acknowledgment tap of this version is the attestation, and management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker CANNOT_VERIFY · blind CANNOT_VERIFY · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 0 ()
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CANNOT_VERIFY. Submitted COI is unreadable or required fields cannot be extracted. Nothing was guessed.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Uploader: provide a clearer copy or complete certificate. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot 2026-10-23 09:00–13:00 (Friday) matches an allowed profile slot. It is not a blackout date (2026-10-22 is the blackout), it meets the 5-day notice (requested 2026-10-14), and no conflict was supplied. No super confirmation is on file yet. The missing parking permit is a logistics risk only.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking request draft to the super (Mica Demo). Step 2 is the super's direct confirmation. Silence does not count as approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The paid receipt for 1000 USD to Lantern Ledger Demo Management via Demo transfer on 2026-10-16 fully pays all three lines in schedule order (500 + 300 + 200 = 1000). The payment date meets the 5-business-day deadline, and there is no overpayment. A full receipt match is terminal: the receipt itself is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for fees. Keep the receipt on file. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and their version, RULES-1, matches the current required version. The tenant's own acknowledgment tap of this version is the attestation, and management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant reads the RULES-1 house rules and records the acknowledgment tap. · simulated status update
+Learner verdict: Pass
+Learner note: G1 CANNOT_VERIFY, nothing guessed, clearer copy asked for.
+
+GC-15
+Expected (original plan): GC-15 — Blackout date picked (Park, ELV v1). States: PENDING → PENDING. The window is disallowed but the gate isn't failed — still awaiting a valid window. Tenant told why, offered the nearest alternative.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 PENDING · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. The holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, which spans the 2026-10-23 move. The business-day deadline is 2026-10-16. The document carries two dates: a printed date of 2026-10-15 and a supply (ingress) date of 2026-10-16. Both are on or before the deadline, so the date requirement is met. The printed tampered=false text is not authentication.
+G2 preliminary: PENDING — Requested slot conflicts with the building’s blackout, hours, notice or captured booking. No booking request can advance.
+G3 preliminary: CHECKS COMPLETE — The receipt shows USD 1,000 paid to Lantern Ledger Demo Management by Demo transfer on 2026-10-16, which is by the deadline. The memo is empty, so the payment was applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200, all fully paid. There is no overpayment. A fully matching receipt is terminal, because the receipt itself is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The readable house rules match the current required version, RULES-1. The tenant's acknowledgment has not been recorded yet, and management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker PENDING · blind PENDING · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. The holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, which spans the 2026-10-23 move. The business-day deadline is 2026-10-16. The document carries two dates: a printed date of 2026-10-15 and a supply (ingress) date of 2026-10-16. Both are on or before the deadline, so the date requirement is met. The printed tampered=false text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The authorized automatic completed-COI-check email goes to management and is logged in the activity feed. G1 becomes HUMAN_VERIFIED only when management confirms directly; a relayed screenshot is only a claim. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → PENDING. Requested slot conflicts with the building’s blackout, hours, notice or captured booking. No booking request can advance.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Choose a compliant alternative, e.g. Oct 23 09:00–13:00 EDT; ask super to resolve conflicting confirmation. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt shows USD 1,000 paid to Lantern Ledger Demo Management by Demo transfer on 2026-10-16, which is by the deadline. The memo is empty, so the payment was applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200, all fully paid. There is no overpayment. A fully matching receipt is terminal, because the receipt itself is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further fee action is needed. The deposit is refundable after the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The readable house rules match the current required version, RULES-1. The tenant's acknowledgment has not been recorded yet, and management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant: tap to acknowledge the RULES-1 house rules. That recorded tap is the attestation. · simulated status update
+Learner verdict: Pass
+Learner note: G2 PENDING on the blackout, not failed; tenant offered the nearest alternative
+
+GC-16
+Expected (original plan): GC-16 — Short payment (Park, FEE v1). States: PENDING → PENDING (two lines VERIFIED, "$200 outstanding" named). $800 against $500+$300+$200.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 CHECKS COMPLETE · G3 PENDING · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Limit is USD 1,000,000, meeting the minimum. Coverage runs 2026-01-01 to 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed date is 2026-10-15 and the ingress date is 2026-10-16, both on or before the deadline. The printed 'tampered: False' line is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday within building hours and a listed slot. It is not the 2026-10-22 blackout. The request on 2026-10-14 meets the 5-day notice, and no conflict was recorded. No super confirmation has been submitted. The missing parking permit is a logistics risk only.
+G3 preliminary: PENDING — Move fee: $500 / $500; Elevator deposit: $300 / $300; Elevator use: $0 / $200. $200 outstanding; never rounded up.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and match the current required version, RULES-1. No tenant acknowledgment is recorded yet, and management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker PENDING · blind PENDING · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Limit is USD 1,000,000, meeting the minimum. Coverage runs 2026-01-01 to 2027-01-01, spanning the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed date is 2026-10-15 and the ingress date is 2026-10-16, both on or before the deadline. The printed 'tampered: False' line is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The fixed completed-COI-check email auto-sends to Lantern Ledger Demo Management as the tenant's authorized setup step, visible in the activity feed. G1 needs direct management confirmation; relayed screenshots do not count. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00, a Friday within building hours and a listed slot. It is not the 2026-10-22 blackout. The request on 2026-10-14 meets the 5-day notice, and no conflict was recorded. No super confirmation has been submitted. The missing parking permit is a logistics risk only.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking draft to Mica Demo (super@fx-park-03.example). The super must confirm directly; silence is not approval. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → PENDING. Move fee: $500 / $500; Elevator deposit: $300 / $300; Elevator use: $0 / $200. $200 outstanding; never rounded up.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: Pay the $200 gap to the building and submit a new receipt. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and match the current required version, RULES-1. No tenant acknowledgment is recorded yet, and management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant reviews the rules and records their own acknowledgment tap for this version. · simulated status update
+2026-10-16T10:00:00-04:00 · VARIANT · Scripted rules-only variant (no live extraction): $499 receipt → FAILED; Move fee: $499 / $500; Elevator deposit: $0 / $300; Elevator use: $0 / $200. $501 outstanding; never rounded up.
+2026-10-16T10:00:00-04:00 · VARIANT · Scripted rules-only variant (no live extraction): $1200 receipt → CHECKS COMPLETE; All receipt fields and every fee line match the schedule; the receipt is the building’s payment attestation. $200 overpayment flagged.
+Learner verdict: Pass
+Learner note: Pass. G3 PENDING with the per-line allocation shown and the $200 gap named, never rounded up.
+
+GC-17
+Expected (original plan): GC-17 — COI with altered dates → G1 REVIEW NEEDED, gate frozen. The expected outbound artifacts: a management-review request drafted by the agent and sent to the management contact on file (tenant CC'd) only after the tenant's explicit Send tap — the tenant authorizes every outbound message — describing the suspected alteration; a tenant notification stating what's wrong plus management's direct contact; a mover notification to wait. The verdict only counts as an authenticated response record — the review link tap, or an email to the move inbox from the known management contact, recorded with who, when, and channel. A tenant-relayed "management said it's fine" is a claim, not a verdict, and changes nothing. Each authenticated verdict has a defined expected state: legitimate → the tampering flag is cleared and the gate returns to CHECKS COMPLETE — but the G1 confirmation is a separate attestation, so management's confirm tap is still required before HUMAN_VERIFIED; fraudulent → gate stays frozen at REVIEW NEEDED and the move cannot proceed on this COI; "send a clean copy from the insurer" → gate returns to PENDING and the new document is checked fresh through the full path.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 CHECKS COMPLETE · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: REVIEW NEEDED — The expiration box looks overwritten; management must review the possible alteration.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00 on a Friday. It is a listed slot within building hours, it is not the 2026-10-22 blackout, and no conflict is shown. The request was received 2026-10-14, which meets the 5-day notice. No super confirmation has been submitted yet.
+G3 preliminary: CHECKS COMPLETE — The receipt shows USD 1,000 paid on 2026-10-16 by Demo transfer to Lantern Ledger Demo Management, which is on or before the deadline. With no memo lines, the payment is applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200. All three lines are fully paid with no gap and no overpayment. A full receipt match is terminal; the receipt itself is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and labeled RULES-1, which matches the current required version. No tenant acknowledgment has been recorded yet.
+Independent readings: G1 worker REVIEW NEEDED · blind REVIEW NEEDED · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 2 (management review, fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → REVIEW NEEDED. The expiration box looks overwritten; management must review the possible alteration.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Contact office@fx-park-03.example directly. Only their review verdict resolves this flag. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review management review message to office@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tenant: management direct contact office@fx-park-03.example. Mover: wait for management review.
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-23 09:00–13:00 on a Friday. It is a listed slot within building hours, it is not the 2026-10-22 blackout, and no conflict is shown. The request was received 2026-10-14, which meets the 5-day notice. No super confirmation has been submitted yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: The tenant reviews and taps Send on the booking draft to the super, Mica Demo. Only the super's direct confirmation completes step 2; silence is not approval. Separately, the parking permit is missing, which is a logistics risk only and does not affect this gate. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt shows USD 1,000 paid on 2026-10-16 by Demo transfer to Lantern Ledger Demo Management, which is on or before the deadline. With no memo lines, the payment is applied in schedule order: Move fee 500, Elevator deposit 300 and Elevator use 200. All three lines are fully paid with no gap and no overpayment. A full receipt match is terminal; the receipt itself is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action is needed for this gate. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules are readable and labeled RULES-1, which matches the current required version. No tenant acknowledgment has been recorded yet.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant reads and taps to acknowledge RULES-1. Management cannot acknowledge on the tenant's behalf. · simulated status update
+2026-10-16T10:00:00-04:00 · TENANT SEND · Tenant approved exact management review draft to office@fx-park-03.example · simulated send
+2026-10-16T10:00:00-04:00 · CLAIM REJECTED · Tenant-relayed management screenshot cannot clear tampering.
+2026-10-16T10:00:00-04:00 · CLAIM REJECTED · Management email headers/contact/reference do not match; no state changed.
+2026-10-16T10:00:00-04:00 · REVIEW BRANCH · fraudulent → REVIEW NEEDED; separate confirm still required after legitimate.
+2026-10-16T10:00:00-04:00 · REVIEW BRANCH · clean copy → PENDING; separate confirm still required after legitimate.
+2026-10-16T10:00:00-04:00 · REVIEW BRANCH · legitimate → CHECKS COMPLETE; separate confirm still required after legitimate.
+2026-10-16T10:00:00-04:00 · MANAGEMENT DETERMINATION · legitimate — Review verdict legitimate. Reason: insurer confirms source original. Reference DEMO-COI-0042.
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Management’s attributed ruling resolves the hold: Review verdict legitimate. Reason: insurer confirms source original. Reference DEMO-COI-0042.. Separate COI confirmation still required.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: Management: confirm COI separately. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Preliminary check plus designated COI-confirm link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Lantern Ledger Demo Management confirmed G1 only; not unloading authorization.
+Learner verdict: Pass
+Learner note: Pass. Altered dates flagged REVIEW NEEDED; review sent only on the tenant's tap; false claims rejected; legitimate branch clears the flag and the separate confirm tap lands HUMAN_VERIFIED.
+
+GC-18
+Expected (original plan): GC-18 — Super proposes another time (Park, ELV v1). States: PENDING → CHECKS COMPLETE → HUMAN_VERIFIED (new slot). Tenant accepts; old confirmation kept as superseded, never deleted.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 HUMAN_VERIFIED · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy runs 2026-01-01 to 2027-01-01, which covers the 2026-10-23 move. The 5-business-day deadline is 2026-10-16. The printed document date (2026-10-15) and the supplied ingress date (2026-10-16) are both on or before that deadline. The printed tampered=false text is not authentication.
+G2 preliminary: REVIEW NEEDED — Captured sender or window conflicts with the known super/request; a fresh direct confirmation is required.
+G3 preliminary: CHECKS COMPLETE — The paid receipt is USD 1000 to the exact payee (Lantern Ledger Demo Management) by Demo transfer, an allowed method. It was paid 2026-10-16, on the deadline. With no memo-named lines, allocating in schedule order fully pays the Move fee 500, Elevator deposit 300 and Elevator use 200. There is no gap and no overpayment. This full receipt match is terminal: the receipt is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The rules document is readable and matches the current required version, RULES-1. The tenant has not yet recorded an acknowledgment, and management cannot acknowledge on the tenant's behalf.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker PENDING · blind PENDING · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 1 (fixed COI confirmation request)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy runs 2026-01-01 to 2027-01-01, which covers the 2026-10-23 move. The 5-business-day deadline is 2026-10-16. The printed document date (2026-10-15) and the supplied ingress date (2026-10-16) are both on or before that deadline. The printed tampered=false text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The automatic completed-COI-check send goes to management, as set up by the tenant and visible in the activity feed. G1 becomes HUMAN_VERIFIED only on direct management confirmation. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → REVIEW NEEDED. Captured sender or window conflicts with the known super/request; a fresh direct confirmation is required.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant: review and send booking request; super: confirm. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The paid receipt is USD 1000 to the exact payee (Lantern Ledger Demo Management) by Demo transfer, an allowed method. It was paid 2026-10-16, on the deadline. With no memo-named lines, allocating in schedule order fully pays the Move fee 500, Elevator deposit 300 and Elevator use 200. There is no gap and no overpayment. This full receipt match is terminal: the receipt is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further G3 action. The deposit refund follows the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The rules document is readable and matches the current required version, RULES-1. The tenant has not yet recorded an acknowledgment, and management cannot acknowledge on the tenant's behalf.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: Tenant records the acknowledgment tap for RULES-1. This is the attestation that makes G4 HUMAN_VERIFIED. Nothing here authorizes unloading; only the super's final authorization does. · simulated status update
+2026-10-16T10:00:00-04:00 · SUPERSEDED · Old 09:00–13:00 confirmation retained. Tenant explicitly accepted latest 13:00–17:00 super proposal.
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. New slot conflict check complete.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Record designated counterproposal attestation. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Preliminary check plus designated tenant-captured counterproposal accepted; three conditions recorded recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Tess Demo · captured super proposal confirmed G2 only; not unloading authorization.
+Learner verdict: Pass
+Learner note: Counterproposal accepted, old confirmation retained as superseded, new slot re-checked and HUMAN_VERIFIED. Preliminary was REVIEW NEEDED (guard escalating the conflicting capture) rather than PENDING.
+
+GC-19
+Expected (original plan): GC-19 — Move date changed (Park). States: terminal → PENDING (revalidation) → terminal. COI stays green only if the new date is inside the policy window; elevator always rebooks; receipt re-checked; house rules untouched. History kept.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 HUMAN_VERIFIED · G2 HUMAN_VERIFIED · G3 VERIFIED · G4 HUMAN_VERIFIED
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, which meets the minimum. The policy runs 2026-01-01 to 2027-01-01, covering the 2026-10-26 move. The printed document date is 2026-10-15 and the supplied ingress date is 2026-10-16; both are on or before the 2026-10-19 five-business-day deadline. All fields were extracted. Printed tampered=false text is not authentication.
+G2 preliminary: CHECKS COMPLETE — Step 1 of 2. The requested slot is 2026-10-26 09:00–13:00, a Monday within allowed days, hours and slots. It is not the 2026-10-22 blackout date and there is no conflict. The request came in 2026-10-14, meeting the 5-day notice. No super confirmation has been submitted yet; the only attached image is the fee receipt.
+G3 preliminary: CHECKS COMPLETE — The paid receipt shows USD 1000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer (an allowed method) on 2026-10-16, before the deadline. With no memo items, lines were matched in schedule order: move fee 500, elevator deposit 300 and elevator use 200, all fully paid. There is no overpayment. A full receipt match is terminal; the receipt itself is the attestation.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The house rules are readable and match the current required version. The tenant's acknowledgment tap has not yet been recorded.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 3 (fixed COI confirmation request, booking, booking)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. Holder and additional insured match the profile exactly. Coverage is USD 1,000,000, meeting the minimum. The policy is effective 2026-01-01 and expires 2027-01-01, covering the 2026-10-23 move. The deadline is 5 business days before the move, which is 2026-10-16. The printed document date (2026-10-15) and the supplied ingress date (2026-10-16) are both on or before that deadline. All extracted fields are complete. Printed 'tampered: False' text is not authentication.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The tenant's setup-authorized automatic send of the completed COI check to management (office@fx-park-03.example) fires and shows in the activity feed. Step 2 is direct management confirmation; a relayed screenshot is only a claim. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is Fri 2026-10-23 09:00–13:00 America/New_York, a listed slot on an allowed weekday. It is not the 2026-10-22 blackout. It was requested 2026-10-14, meeting the 5-day notice. No conflict is recorded on the supplied evidence. No super confirmation has been submitted yet, which is expected at this step.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: The tenant reviews and taps Send on the booking draft to super Mica Demo (super@fx-park-03.example). Step 2 is the super's direct confirmation; silence is not approval. Any captured confirmation counts only if it meets every exception condition. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt is a paid USD 1,000 Demo transfer to Lantern Ledger Demo Management, dated 2026-10-16, which is by the deadline. With no memo lines, schedule order applies: Move fee 500, Elevator deposit 300 and Elevator use 200 are each fully paid. There is no gap and no overpayment. This full match is terminal: the receipt itself records building acceptance, and no tap is needed.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further G3 action is needed. The elevator deposit is refundable after the building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The house rules document is readable and shows the current required version, RULES-1. Management cannot acknowledge the rules for the tenant.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant records their own acknowledgment tap for this version. A missing parking permit is a logistics risk only and does not hold any gate. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G1 → HUMAN_VERIFIED. Preliminary check plus designated COI-confirm link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Lantern Ledger Demo Management confirmed G1 only; not unloading authorization.
+2026-10-16T10:00:00-04:00 · TENANT SEND · Tenant approved exact booking draft to super@fx-park-03.example · simulated send
+2026-10-16T10:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Preliminary check plus designated booking-link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Mica Demo confirmed G2 only; not unloading authorization.
+2026-10-16T10:00:00-04:00 · STATE · G4 → HUMAN_VERIFIED. Preliminary check plus designated tenant acknowledgment tap · RULES-1 recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Tess Demo confirmed G4 only; not unloading authorization.
+2026-10-16T10:00:00-04:00 · RESCHEDULE · Move changed 2026-10-23T09:00:00-04:00 → 2026-10-26T09:00:00-04:00. All anchors shifted; prior attestations retained.
+2026-10-16T10:00:00-04:00 · REVALIDATION · G1 policy still covers new date; prior management attestation pinned.
+2026-10-16T10:00:00-04:00 · REOPENED · G2 reopened; approval link and approval revoked.
+2026-10-16T10:00:00-04:00 · STATE · G2 → PENDING. Move date changed; date-dependent evidence requires revalidation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Run fresh checks and required attestation; old history retained. · simulated status update
+2026-10-16T10:00:00-04:00 · REOPENED · G3 reopened; approval link and approval revoked.
+2026-10-16T10:00:00-04:00 · STATE · G3 → PENDING. Move date changed; date-dependent evidence requires revalidation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: Run fresh checks and required attestation; old history retained. · simulated status update
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · UNCHANGED · G1 existing attestation retained; evidence and requirements unchanged.
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Step 1 of 2. The requested slot is 2026-10-26 09:00–13:00, a Monday within allowed days, hours and slots. It is not the 2026-10-22 blackout date and there is no conflict. The request came in 2026-10-14, meeting the 5-day notice. No super confirmation has been submitted yet; the only attached image is the fee receipt.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Tenant reviews and taps Send on the booking request draft to super Mica Demo. The super's direct confirmation is step 2. Silence does not count as confirmation. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The paid receipt shows USD 1000 to the exact payee, Lantern Ledger Demo Management, by Demo transfer (an allowed method) on 2026-10-16, before the deadline. With no memo items, lines were matched in schedule order: move fee 500, elevator deposit 300 and elevator use 200, all fully paid. There is no overpayment. A full receipt match is terminal; the receipt itself is the attestation.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further fee action is needed. Note that the deposit is refundable after building damage review. · simulated status update
+2026-10-16T10:00:00-04:00 · UNCHANGED · G4 existing attestation retained; evidence and requirements unchanged.
+2026-10-16T10:00:00-04:00 · TENANT SEND · Tenant approved exact booking draft to super@fx-park-03.example · simulated send
+2026-10-16T10:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Preliminary check plus designated booking-link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Mica Demo confirmed G2 only; not unloading authorization.
+2026-10-16T10:00:00-04:00 · REVALIDATION · G1 retained only because new date inside policy window; G2 rebooked; receipt rechecked; G4 acknowledgment unchanged.
+Learner verdict: Pass
+Learner note: Baseline all-terminal; reschedule revalidates (G1 retained in-window, G2 rebooked, G3 re-verified, G4 unchanged); all four terminal again.
+
+GC-20
+Expected (original plan): GC-20 — Super disputes a captured confirmation (Park). States: HUMAN_VERIFIED (tenant-captured) → PENDING → HUMAN_VERIFIED (fresh link tap). On dispute, the captured attestation is formally marked SUPERSEDED–DISPUTED — retained in history, counted as nothing — and the gate returns to PENDING. Per the rule above, the capture can never be reinstated by argument; only a new direct attestation re-greens the gate, which arrives via the link tap.
+Actual: Live AI: canonical extraction, worker and independent auditor
+All four gate states: G1 CHECKS COMPLETE · G2 HUMAN_VERIFIED · G3 VERIFIED · G4 CHECKS COMPLETE
+G1 preliminary: CHECKS COMPLETE — Step 1 of 2. All checks on the supplied evidence passed:
+- Holder and additional insured exactly match the profile.
+- Coverage is USD 1,000,000, meeting the minimum.
+- Effective 2026-01-01 (on/before move) and expires 2027-01-01 (after move).
+- The deadline is 5 business days before the 2026-10-23 move, which is 2026-10-16. The printed date (2026-10-15) and the ingress date (2026-10-16) are both on or before it, so the date requirement is met.
+- All extracted fields are complete.
+The printed 'tampered: False' is not authentication, but no alteration is suspected.
+G2 preliminary: PENDING — The requested slot (2026-10-23 09:00–13:00) is a valid weekday window, not a blackout, with no conflict. The tenant-captured screenshot shows the super's address and the matching slot. However, the super has sent a direct dispute against that capture, so it is SUPERSEDED–DISPUTED. The documented exception conditions are also not shown to be satisfied.
+G3 preliminary: CHECKS COMPLETE — The receipt fully matches:
+- Payee: Lantern Ledger Demo Management.
+- Method: Demo transfer, which is allowed.
+- Amount: USD 1,000, paid 2026-10-16, by the deadline.
+- With no memo lines, schedule order applies and fully covers Move fee 500, Elevator deposit 300 and Elevator use 200.
+- No overpayment.
+The receipt is the attestation, so this gate is terminal.
+G4 preliminary: CHECKS COMPLETE — Step 1 of 2. The supplied house rules are readable and match the current required version.
+Independent readings: G1 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G2 worker PENDING · blind PENDING · G3 worker CHECKS COMPLETE · blind CHECKS COMPLETE · G4 worker CHECKS COMPLETE · blind CHECKS COMPLETE
+Simulated outbox: 2 (fixed COI confirmation request, booking)
+Approval link: none
+Unload authorization: none
+Profile fx-park-03 v3 · GOLDEN-v1
+Test replay events:
+2026-10-16T10:00:00-04:00 · TEST SETUP · Explicit test replay: profile confirmed from fixture; all human actions below are simulated test events.
+2026-10-16T10:00:00-04:00 · RUN · All four preliminary checks run · Live AI: canonical extraction, worker and independent auditor · GOLDEN-v1
+2026-10-16T10:00:00-04:00 · STATE · G1 → CHECKS COMPLETE. Step 1 of 2. All checks on the supplied evidence passed:
+- Holder and additional insured exactly match the profile.
+- Coverage is USD 1,000,000, meeting the minimum.
+- Effective 2026-01-01 (on/before move) and expires 2027-01-01 (after move).
+- The deadline is 5 business days before the 2026-10-23 move, which is 2026-10-16. The printed date (2026-10-15) and the ingress date (2026-10-16) are both on or before it, so the date requirement is met.
+- All extracted fields are complete.
+The printed 'tampered: False' is not authentication, but no alteration is suspected.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Insurance: The tenant's pre-authorized completed-COI-check email goes to management and is logged in the activity feed. Only management's direct confirmation makes G1 human-verified. A relayed screenshot of a management confirmation would only be a claim. · simulated status update
+2026-10-16T10:00:00-04:00 · AUTO COI · Fixed check email automatically sent to management, tenant and mover CC’d · setup authorized · simulated
+2026-10-16T10:00:00-04:00 · STATE · G2 → PENDING. The requested slot (2026-10-23 09:00–13:00) is a valid weekday window, not a blackout, with no conflict. The tenant-captured screenshot shows the super's address and the matching slot. However, the super has sent a direct dispute against that capture, so it is SUPERSEDED–DISPUTED. The documented exception conditions are also not shown to be satisfied.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Preserve the disputed capture in history. The super must give a fresh direct confirmation tap for this slot. The tenant may tap Send on the booking draft to request it; nothing is sent automatically. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G3 → VERIFIED. The receipt fully matches:
+- Payee: Lantern Ledger Demo Management.
+- Method: Demo transfer, which is allowed.
+- Amount: USD 1,000, paid 2026-10-16, by the deadline.
+- With no memo lines, schedule order applies and fully covers Move fee 500, Elevator deposit 300 and Elevator use 200.
+- No overpayment.
+The receipt is the attestation, so this gate is terminal.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Fees: No further action for G3. · simulated status update
+2026-10-16T10:00:00-04:00 · STATE · G4 → CHECKS COMPLETE. Step 1 of 2. The supplied house rules are readable and match the current required version.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: House rules: The tenant records their own acknowledgment tap of this version. Management cannot acknowledge on the tenant's behalf. · simulated status update
+2026-10-16T10:00:00-04:00 · DISPUTE · Direct booking-link tap governs; unsupported dispute does not move G2.
+2026-10-16T10:00:00-04:00 · STATE · G2 → CHECKS COMPLETE. Fresh slot conflict check after dispute.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: Send new booking request and obtain direct tap. · simulated status update
+2026-10-16T10:00:00-04:00 · DRAFT · Review booking message to super@fx-park-03.example; nothing sent.
+2026-10-16T10:00:00-04:00 · TENANT SEND · Tenant approved exact booking draft to super@fx-park-03.example · simulated send
+2026-10-16T10:00:00-04:00 · STATE · G2 → HUMAN_VERIFIED. Preliminary check plus designated booking-link tap recorded.
+2026-10-16T10:00:00-04:00 · NOTIFY · Tess Demo: Elevator: No action needed. · simulated status update
+2026-10-16T10:00:00-04:00 · HUMAN ATTESTATION · Mica Demo confirmed G2 only; not unloading authorization.
+Learner verdict: Pass
+Learner note: Disputed capture counts as nothing; fresh booking draft created, tenant sends, direct link tap lands HUMAN_VERIFIED. Started PENDING (readers judged the capture's conditions unsatisfied), so no formal SUPERSEDED–DISPUTED event fired.
+
+Improvement
+Before: After many rounds of test runs, the last test run ran 9 Pass, 11 Needs work, and 0 Fail, with zero false approvals. That run was on V5, and it came after the October 22 fix pass, which cured the earlier stall — the human taps never landed because the prompts never defined what CHECKS COMPLETE means. The taps land now. But the V5 run exposed the next problem: the two checkers disagreed with each other in 8 cases, mostly on G4, reading the same evidence and reaching different verdicts. Three cases had workflow breaks underneath: GC-20's fresh tap after a dispute never landed, GC-19's baseline never went fully terminal, and GC-13's freeze couldn't be tested live.
+Change: I added five sentences to both prompts — the worker's and the auditor's. First, classify every artifact by which gate it belongs to before judging it. Second, G4 has one result: a readable matching rules document is CHECKS COMPLETE, and only the tenant's own tap completes it. Third, a fully matching receipt is terminal, so G3 never waits for a second step. Fourth, a captured confirmation counts only when the sender, the window, and every exception condition all hold. Fifth, a hold stays in its own gate. I also made the export print both readers' verdicts per gate, so a disagreement is visible, and made the GC-20 replay create the fresh booking draft when none exists.
+After: I re-ran all 20 cases on V8 with live AI and got 20 Pass, 0 Needs work, 0 Fail, still zero false approvals. Every one of the 11 needs-work cases flipped, and the two readers agreed on all four gates in every case. The three workflow breaks are fixed: GC-20's fresh link tap lands, GC-19's baseline goes fully terminal before the reschedule, and GC-13 fails correctly when both readers agree on the entity mismatch.
+
+Known limitations
+Emails, move inbox, recipient identities, single-use links and time progression are simulations inside one tab. No real delivery, remote sharing, bank/insurer lookup, shared booking calendar, persistent archive or background jobs. A server, email service and secure identity links would be needed for those. Data is kept only for this visit; download the audit or Copy results before closing. Business days exclude weekends using a fictional calendar, without holidays. Sender-header checks demonstrate attribution, not real email authentication. Live AI can misread documents; both checkers may share a blind spot. Only fictional evidence should be uploaded. Real AI tested by the builder: local official run 2026-10-25 on own key, 9 Pass / 11 Needs work / 0 Fail; no real email tested.
+
+Builder checks
+Builder ran GC-01–GC-20 in labelled sample-mode browser replay. Checked the correction loop, human attestations, 48-hour link, refusal, unsent-draft nudge, dispute/supersession, phone layout, copy fallback and audit download. Prepared stand-in AI replies tested independent calls, invented citations, disagreements and errors without silent fallback. A simulated Product Faculty frame exercised the original sandbox and content policy. Official live-AI run 2026-10-25 (local, own key): 9 Pass / 11 Needs work / 0 Fail, zero false approvals. No real email was tested. Browser QA loaded page content directly because this environment blocks file navigation; double-click opening and your live-key tests remain manual. Builder improvement: corrected COI evidence now survives repeat checks, preserving unchanged attestations.
