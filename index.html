@@ -193,6 +193,27 @@ pre, .log { overflow-wrap: anywhere; }
 .evals-table th:last-child { width: 180px; }
 #eval-rows td { width: 25%; }
 @media(max-width:760px) { .setup-grid, .gate-grid, .readings { grid-template-columns: minmax(0,1fr); } #eval-rows td { width: 100%; } .evals-table { table-layout: auto; } }
+
+/* LAYOUT-IMPROVEMENT — Oct 28, 2026. Layout only. No prompts, gate logic, or eval code changed.
+   Goal: gates visible without scrolling past the fixture form; case picker in one row; fixture fields collapsed. */
+.topbar { position: sticky; top: 0; z-index: 50; }
+#move-view > section:first-child .panel-body { padding: 12px 16px; }
+#move-view > section:first-child h2 { font-size: 20px; }
+#cases { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+#cases .chip { flex: none; }
+.chip.is-active { background: var(--accent); color: var(--accent-ink); border: 2px solid var(--accent); font-size: 15px; padding: 8px 16px; }
+#loop .gate { padding: 20px; }
+#loop .gate h3 { font-size: 18px; }
+#loop .gate .badge { font-size: 14px; padding: 4px 10px; }
+details.fixture-details { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 12px 0; }
+details.fixture-details summary { cursor: pointer; font-weight: 700; }
+
+/* LAYOUT v2 — Oct 28. Stages below Gates become dropdowns. Gates + Run stay always visible. */
+.run-bar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; margin: 12px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-raise); }
+.run-bar .btn { font-size: 16px; padding: 10px 18px; }
+details.stage-details { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin: 12px 0; }
+details.stage-details summary { cursor: pointer; font-weight: 700; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+details.stage-details[open] summary { margin-bottom: 10px; }
 </style>
 </head>
 <body>
@@ -203,22 +224,23 @@ pre, .log { overflow-wrap: anywhere; }
 <main id="move-view" class="page">
 <section class="panel"><div class="panel-body"><h2>Ready before the truck arrives.</h2><p>Check insurance, elevator booking, fees and house rules. Let your building’s super make the final call.</p><div class="row"><button class="btn primary" id="guided">Start the sample move</button><button class="btn" id="own-move">Use your own fictional packet</button></div><p class="boundary-note">Single-page prototype: emails, inbox arrivals, clock and recipient links are simulated in this tab. Nothing is delivered externally. Records last for this visit.</p></div></section>
 <section class="panel"><div class="panel-head">20 cases to explore</div><div class="panel-body"><p class="hint">Pick a case, confirm its building profile, then run all four checks. Start the sample move to catch and correct a wrong certificate.</p><div class="chips" id="cases"></div></div></section>
-<section class="panel" id="loop"><div class="panel-head">One move · Intake → Check → Attest → Notify</div><div class="panel-body">
-<div class="stage" data-n="1">Input</div><div id="case-input"></div>
-<div class="setup-grid">
-<label class="label">Tenant name<input class="input" id="tenant" value="Tess Demo"></label><label class="label">Current fictional address<input class="input" id="from-address" value="8 Storybook Lane, Fictional NYC"></label><label class="label">Current unit<input class="input" id="from-unit" value="2A"></label>
-<label class="label">New fictional address<input class="input" id="to-address" value="30 Paper Lantern Lane, Fictional NYC"></label><label class="label">New unit<input class="input" id="to-unit" value="4D"></label><label class="label">Move date<input class="input" type="date" id="move-date" value="2026-10-23"></label>
-<label class="label">Elevator start<input class="input" type="time" id="slot-start" value="09:00"></label><label class="label">Elevator end<input class="input" type="time" id="slot-end" value="13:00"></label><label class="label">Mover email (optional)<input class="input" type="email" id="mover-email" value="mover@papercart.example"></label>
-</div>
-<div id="sample-setup"><label class="label">Fictional building packet<select class="input" id="profile-choice"></select></label><button class="btn" id="load-packet">Load sample building packet</button></div>
+<section class="panel" id="loop"><div class="panel-head">One move · Intake → Check → Attest → Notify</div><div class="panel-body"><div class="stage" data-n="1">Gates at a glance</div><p class="hint">These four cards fill in when you run the checks below. Before a run, they are empty.</p><div id="gates" class="gate-grid"></div><div id="output"></div>
+<div class="run-bar"><button class="btn primary" id="run" disabled>Check all four gates</button><span class="thinking" id="working" role="status" hidden>Reading evidence and checking the same facts independently…</span></div><p id="error" class="error-note" role="alert" hidden></p>
+<details class="stage-details"><summary>2 · Move details — case, date and packet</summary><div id="case-input"></div>
+<div class="setup-grid"><label class="label">Move date<input class="input" type="date" id="move-date" value="2026-10-23"></label><label class="label">Elevator start<input class="input" type="time" id="slot-start" value="09:00"></label><label class="label">Elevator end<input class="input" type="time" id="slot-end" value="13:00"></label></div>
+<details class="fixture-details"><summary>Fixture details — tenant and addresses (already set, click to expand)</summary><div class="setup-grid"><label class="label">Tenant name<input class="input" id="tenant" value="Tess Demo"></label><label class="label">Current fictional address<input class="input" id="from-address" value="8 Storybook Lane, Fictional NYC"></label><label class="label">Current unit<input class="input" id="from-unit" value="2A"></label><label class="label">New fictional address<input class="input" id="to-address" value="30 Paper Lantern Lane, Fictional NYC"></label><label class="label">New unit<input class="input" id="to-unit" value="4D"></label><label class="label">Mover email (optional)<input class="input" type="email" id="mover-email" value="mover@papercart.example"></label></div></details><div id="sample-setup"><label class="label">Fictional building packet<select class="input" id="profile-choice"></select></label><button class="btn" id="load-packet">Load sample building packet</button></div>
 <div id="custom-setup" hidden><label class="label">Upload a fictional packet<input class="input" type="file" id="packet-file" accept=".pdf,.png,.jpg,.jpeg,.webp,.gif,.txt,.json,.md"></label><button class="btn primary" id="extract-packet">Read packet with real AI</button><p class="hint">Sample mode cannot process your text or files. Use real AI for a fictional packet. PDFs are sent for reading; their name is shown instead of an embedded viewer.</p></div>
-<div class="stage" data-n="2">Context</div><div id="context"><div class="empty"><div class="headline">Start with the building’s rules.</div>Load the sample packet, review its facts, and choose “Looks right”. Nothing runs before that.</div></div>
+</details>
+<details class="stage-details"><summary>3 · Building rules — packet facts to confirm</summary><div id="context"><div class="empty"><div class="headline">Start with the building’s rules.</div>Load the sample packet, review its facts, and choose “Looks right”. Nothing runs before that.</div></div>
 <div id="profile-review" hidden><details class="source"><summary>Correct extracted facts before confirming</summary><label class="label">Profile facts<textarea class="input" id="profile-json" rows="12"></textarea></label><label class="label">Correction reason<input class="input" id="correction-reason" placeholder="Required if you change a fact"></label></details><button class="btn primary" id="confirm-profile">Looks right — start this workflow</button><p class="hint">This authorizes the fixed completed-COI check email to the management contact on this profile. It does not authorize unloading.</p></div>
-<div class="row"><button class="btn primary" id="run" disabled>Check all four gates</button><span class="thinking" id="working" role="status" hidden>Reading evidence and checking the same facts independently…</span></div><p id="error" class="error-note" role="alert" hidden></p>
-<div class="stage" data-n="3">Decision</div><div id="decision" aria-live="polite"><p class="hint">A preliminary check is Step 1 of 2. The agent cannot authorize unloading.</p></div>
-<div class="stage" data-n="4">Output</div><div id="gates" class="gate-grid"></div><div id="output"></div>
-<div class="stage" data-n="5">Review</div><div id="review"><p>Confirm the building profile, then run the checks to see the next human action for each gate.</p></div><p class="boundary-note">Nothing composed is sent without the tenant’s approval. The fixed completed-COI check email is the setup-authorized exception. Only the super’s final tap authorizes unloading.</p>
+
+</details>
+<details class="stage-details"><summary>4 · Detailed decisions — worker and blind auditor</summary><div id="decision" aria-live="polite"><p class="hint">A preliminary check is Step 1 of 2. The agent cannot authorize unloading.</p></div>
+
+</details>
+<details class="stage-details"><summary>5 · Next actions — what each person taps next</summary><div id="review"><p>Confirm the building profile, then run the checks to see the next human action for each gate.</p></div><p class="boundary-note">Nothing composed is sent without the tenant’s approval. The fixed completed-COI check email is the setup-authorized exception. Only the super’s final tap authorizes unloading.</p>
 </div></section>
+</details>
 <section class="panel"><div class="panel-head">Activity feed · runs and human decisions</div><div class="panel-body"><div class="row"><button class="btn" id="download-audit">Download visit audit</button><button class="btn" id="forget">Forget this visit</button></div><div class="log" id="log" aria-live="polite">No runs yet.</div><details class="source"><summary id="outbox-title">Simulated outbox · 0 messages</summary><div id="outbox"></div></details></div></section>
 </main>
 <main id="evals-view" class="page" hidden>
